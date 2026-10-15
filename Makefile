@@ -1,0 +1,28 @@
+.PHONY: all check-fmt fmt typecheck lint test spelling
+
+all: check-fmt typecheck lint test
+	+$(MAKE) spelling
+
+check-fmt:
+	bun fmt
+
+fmt: ## Format sources
+	bun fmt
+	mdformat-all
+
+typecheck:
+	bun check:types
+
+lint:
+	bun lint
+
+test:
+	bun test
+
+TYPOS_VERSION ?= 1.48.0
+TYPOS := uv tool run typos@$(TYPOS_VERSION)
+
+spelling: ## Enforce en-GB-oxendict spelling in Markdown prose
+	uv run scripts/generate_typos_config.py
+	find . -type f -name '*.md' -not -path './node_modules/*' -print0 | \
+		xargs -0 $(TYPOS) --config typos.toml --force-exclude
