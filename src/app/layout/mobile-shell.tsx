@@ -54,10 +54,7 @@ export function MobileShell({
     );
 
     return (
-      <div
-        className="flex min-h-screen items-center justify-center bg-base-200/80 px-4 py-10"
-        data-mobile-shell="hosted"
-      >
+      <div className="mobile-shell__stage" data-mobile-shell="hosted">
         <div className={frameClasses}>
           {backgroundNode}
           <div className="relative flex h-full flex-col">{children}</div>

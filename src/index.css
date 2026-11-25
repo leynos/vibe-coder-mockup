@@ -22,6 +22,16 @@
 }
 
 @layer components {
+  /* Vertically stacked, centred content for a routed screen. */
+  .screen-stack {
+    @apply flex flex-1 flex-col items-center justify-center gap-4 p-6;
+  }
+
+  /* Centres the hosted phone frame on a tinted backdrop. */
+  .mobile-shell__stage {
+    @apply flex min-h-screen items-center justify-center bg-base-200/80 px-4 py-10;
+  }
+
   /* Floating drawer for global controls (theme + display). */
   .global-controls__panel {
     @apply flex w-56 flex-col gap-3 rounded-2xl border border-base-300/50 bg-base-100/95 p-4 text-base-content shadow-2xl shadow-base-300/40 backdrop-blur;
